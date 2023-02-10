@@ -1,0 +1,9 @@
+Ensure that the image uploads start with https://res.cloudinary.com/dntmjpcmr/image/upload/ Use RegEx for this
+
+Ensure that the discount number is checked against the selling currency. It must be in the selling currency
+
+Check that the web_link and video_link on Products model starts with https:
+
+Optional: On the User model use some RegEx to make it more unique
+
+For the phone on the User model, decide on if to make the country code available on the frontend or on the backend
