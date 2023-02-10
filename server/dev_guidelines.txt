@@ -7,3 +7,5 @@ Check that the web_link and video_link on Products model starts with https:
 Optional: On the User model use some RegEx to make it more unique
 
 For the phone on the User model, decide on if to make the country code available on the frontend or on the backend
+
+On the models, move the foreign keys downward. Arrange your models

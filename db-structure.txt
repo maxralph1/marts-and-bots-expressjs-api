@@ -1,1 +1,136 @@
-Users
+Users:
+ username
+ first name
+ other name
+ last name
+ // vendor name
+ company name
+ profile image
+ description
+ email
+ email_verified_at
+ phone
+ roles []
+ display_mode
+ language
+ refreshToken: String
+ is_deleted
+
+
+Roles:
+ name
+ code
+
+
+Currency:
+ code
+ sign
+ html sign
+ name
+
+
+Products:
+ name
+ code
+ slug
+ image
+ images
+ brand (foreign_key)
+ category (foreign_key)
+ sub-category (foreign_key)
+ details
+ colors []   ||    productinstance.color (foreign_key)
+ size
+ purchase_price
+ purchase_currency
+ selling_price
+ selling_currency
+ discount
+ // hot deal
+ // hot new
+ // trend
+ best rated
+ web link
+ video link
+ // countInStock
+ // ratings [{username, rating}]
+ // reviews [{username, review}]
+ status
+
+
+Ratings:
+ product (foreign_key)
+ user (foreign_key)
+ stars {1,2,3,4,5}
+
+
+Reviews:
+ product (foreign_key)
+ user (foreign_key)
+ title
+ details
+
+
+Product Instances:
+ product (foreign_key)
+ code
+ imprint
+ color
+ ISBN
+ status
+
+
+Brands:
+ name
+ logo
+
+
+Categories:
+ name
+ isActive
+
+
+Sub-Categories:
+ name
+ category (foreign_key)
+ isActive
+
+
+Orders:
+ order_items [{slug, name, quantity, image, price, product(foreign_key)}]
+ shipping_address {fullName, address, city, postalCode, country, location{latitude, longitude, address, name, vicinity, googleAddressId}}
+ items price
+ shipping cost
+ tax price (vat)
+ total price
+ payment (foreign_key)
+ user (foreign_key)
+ coupon (foreign_key)
+ is paid
+ is delivered
+ delivered at
+ return order
+
+
+Payment:
+ payment_method {card, paypal, btc}
+ reference_code
+ status
+ user (foreign_key)
+ order (foreign_key)
+ date
+
+
+Coupons:
+ code/codename
+ discount_value
+ dicount_type
+
+
+Wishlists:
+ user (foreign_key)
+ product (foreign_key)
+
+
+Newsletters:
+ email
