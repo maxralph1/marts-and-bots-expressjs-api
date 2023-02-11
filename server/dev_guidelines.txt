@@ -9,3 +9,55 @@ Optional: On the User model use some RegEx to make it more unique
 For the phone on the User model, decide on if to make the country code available on the frontend or on the backend
 
 On the models, move the foreign keys downward. Arrange your models
+
+Add validator folder (classes) for all inputs. Abstract it away.
+
+Add Service classes (files in folder) to handle the complex logic (of algorithms and data structures) often carried out in cobntrollers. Abstract it all away. Make the controllers as light as possible.
+
+
+Use these to easily change the endings for the egeneric folders utilizing them:
+
+touch categoryService.js brandService.js couponService.js currencyService.js newsletterService.js orderService.js paymentService.js productService.js productInstanceService.js ratingService.js reviewService.js roleService.js subCategoryService.js userService.js wishlistService.js
+
+Follow usual creation order of:
+Models
+Controllers
+Routes
+Validations
+Services
+
+
+//make the subcategory link, reflect the category it represents
+
+
+make product instance link reflect the product it represents
+
+
+Work on the controller methods of those models sans external relationships,
+then, work on those with relationships. Follow these steps:
+Brand
+Category
+SubCategory
+Currency
+Coupon
+Newsletter
+Role
+User
+Product
+ProductInstance
+Rating
+Review
+Wishlist
+Order
+Payment
+
+
+
+
+implement middlewares
+
+implement jsonwebtoken
+
+share excess logic code between contollers and Services
+
+give the validators all validations within controllers
