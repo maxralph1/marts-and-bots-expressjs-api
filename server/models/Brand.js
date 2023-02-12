@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const BrandSchema = new Schema({
-    name: { type: String, min: 2, max: 45, required: true },
-    code: { type: String, min: 2, max: 45, unique: true, required: true },
+    name: { type: String, required: true },
+    code: { type: String, unique: true, required: true },
     logo: String
   },
   {

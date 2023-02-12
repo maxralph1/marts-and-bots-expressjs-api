@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const OrderSchema = new Schema({
-  order_items: [
-    { product_choice: { type: Schema.Types.ObjectId, ref: 'ProductInstance', required: true } }
+    order_items: [
+      { product_choice: { type: Schema.Types.ObjectId, ref: 'ProductInstance', required: true } }
     ],
     shipping_address: {
       full_name: { type: String, min: 3, max: 50 },

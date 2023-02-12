@@ -5,11 +5,12 @@ const subCategoryController = require('../../controllers/subCategoryController')
 
 router.route('/')
     .get(subCategoryController.getAllSubCategories)
-    .post(subCategoryController.createSubCategory)
+    .post(subCategoryController.createSubCategory); 
+
+router.route('/:slug')
+    .get(subCategoryController.getSubCategory)
     .put(subCategoryController.updateSubCategory)
     .delete(subCategoryController.deleteSubCategory);
-
-router.get('/:id', subCategoryController.getSubCategory);
 
 
 module.exports = router;

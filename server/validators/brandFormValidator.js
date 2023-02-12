@@ -1,6 +1,6 @@
 const { body, validationResult } = require('express-validator');
 
-let createBrandFormValidator = () => {
+let createBrandFormValidator = (req, res, next) => {
   body('name')
     .trim()
     .isLength({ min: 2, max: 45 })
@@ -10,7 +10,9 @@ let createBrandFormValidator = () => {
     .withMessage('Brand name has non-alphanumeric characters.'),
   body('logo')
     .trim()
-    .escape()
+    .escape();
+
+  next();
 };
 
 const updateBrandFormValidator = () => {

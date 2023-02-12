@@ -28,6 +28,7 @@ const wishlistRouter = require('./routes/api/wishlistRoutes');
 // Connect to database
 dbConnection();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -55,6 +56,6 @@ app.use('/api/wishlists', wishlistRouter);
 // Final connection
 
 mongoose.connection.once('open', () => {
-  console.log('DB Connected');
+  console.log('Database connection established.');
   app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 });
