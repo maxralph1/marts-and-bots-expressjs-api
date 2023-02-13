@@ -18,6 +18,9 @@ const ProductInstanceSchema = new Schema({
   },
   {
     timestamps: true,
+  },
+  {
+    optimisticConcurrency: true
   }
 );
 

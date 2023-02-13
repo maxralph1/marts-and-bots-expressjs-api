@@ -53,7 +53,7 @@ app.use('/api/wishlists', wishlistRouter);
 
 
 
-// Final connection
+// Stay connected
 
 mongoose.connection.once('open', () => {
   console.log('Database connection established.');
