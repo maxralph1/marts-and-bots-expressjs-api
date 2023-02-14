@@ -7,12 +7,12 @@ const { v4: uuid } = require('uuid');
 
 const getAllCurrencies = async (req, res) => {
   const currencies = await Currency.find().sort('-created_at');
-  if ((!currencies) || (currencies.length < 1)) return res.status(404).json({ "message": "No currencies found" })
+  if ((!currencies) || (currencies.length < 1)) return res.status(404).json({ "message": "No currencies found" });
 };
 
 
 const getCurrency = async (req, res) => {
-  if (!req?.params?.id) return res.status(400).json({ "message": "Accurate currency ID required." });
+  if (!req?.params?.id) return res.status(400).json({ "message": "Accurate currency ID required" });
 
   const currency = await Currency.findOne({ _id: req.params.id }).exec();
   if (!currency) {
@@ -111,7 +111,7 @@ const updateCurrency = [
 
     const currency = await Currency.findOne({ _id: req.params.id }).exec();
     if (!currency) {
-      return res.status(404).json({ "message": `The specified currency ${req.body.currency} does not match our records` })
+      return res.status(404).json({ "message": `The specified currency ${req.body.currency} does not match our records` });
     };
     if (req.body?.code) currency.code = req.body.code;
     if (req.body?.sign) currency.sign = req.body.sign;
@@ -135,7 +135,7 @@ const deleteCurrency = async (req, res) => {
   if (!currency) {
     return res.status(404).json({ "message": `No currency matches ${req.params.id}` });
   }
-  const result = await Currency.deleteOne();
+  const result = await currency.deleteOne();
   res.json(result);
 };
 

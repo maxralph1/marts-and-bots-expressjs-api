@@ -80,7 +80,7 @@ const updateSubCategory = [
       .trim()
       .isLength()
       .escape()
-      .withMessage('Category must be specified'),
+      .withMessage('Category must be specified')
   ,
   async (req, res) => {
     const errors = validationResult(req);

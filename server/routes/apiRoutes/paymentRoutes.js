@@ -5,11 +5,12 @@ const paymentController = require('../../controllers/paymentController');
 
 router.route('/')
     .get(paymentController.getAllPayments)
-    .post(paymentController.createPayment)
+    .post(paymentController.createPayment);
+
+router.route('/:ref')
+    .get(paymentController.getPayment)
     .put(paymentController.updatePayment)
     .delete(paymentController.deletePayment);
-
-router.get('/:id', paymentController.getPayment);
 
 
 module.exports = router;

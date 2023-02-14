@@ -61,3 +61,10 @@ implement jsonwebtoken
 share excess logic code between contollers and Services
 
 give the validators all validations within controllers
+
+add a default role during user registration
+
+remember to use the path module for the web version since without these are often problematic in some hosts
+
+
+Create a welcome page that serves directions about the api

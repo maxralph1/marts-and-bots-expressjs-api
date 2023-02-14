@@ -40,7 +40,7 @@ const createBrand = [
   , 
   async (req, res, next) => {
     if (req.body?.name) req.body.name;
-    if (req.body?.code) {req.body.code === null};
+    if (req.body?.code) {req.body.code = null};
     if (req.body?.logo) req.body.logo;
 
     const errors = validationResult(req);
@@ -90,7 +90,7 @@ const updateBrand = [
     .escape()  
   ,     
   async (req, res, next) => {
-    if (req.body?.code) {req.body.code === null};
+    if (req.body?.code) {req.body.code = null};
 
     const errors = validationResult(req);
 

@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
-    name: { type: String, max: 45, required: true },
+    name: { type: String, maxLength: 100, required: true },
     details: String,
     size: Number,
     size_unit: String,
     code: { type: String, unique: true, required: true },
-    slug: { type: String, max: 150 },
+    slug: { type: String, maxLength: 150 },
     image: String,
     images: [ String ],
     web_link: String,
@@ -20,7 +20,8 @@ const ProductSchema = new Schema({
     purchase_currency: { type: Schema.Types.ObjectId, ref: 'Currency' },
     selling_price: Number,
     selling_currency: { type: Schema.Types.ObjectId, ref: 'Currency' },
-    discount: Number,
+    discount_unit: Number,
+    discount_type: String,
     status: {
       type: String,
       enum: ['Available', 'Sold'],
@@ -29,7 +30,7 @@ const ProductSchema = new Schema({
     },
   },
   {
-    timestamps: true,
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
   }
 );
 

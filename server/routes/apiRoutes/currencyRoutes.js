@@ -5,11 +5,12 @@ const currencyController = require('../../controllers/currencyController');
 
 router.route('/')
     .get(currencyController.getAllCurrencies)
-    .post(currencyController.createCurrency)
+    .post(currencyController.createCurrency);
+
+router.route('/:id')
+    .get( currencyController.getCurrency)
     .put(currencyController.updateCurrency)
     .delete(currencyController.deleteCurrency);
-
-router.get('/:id', currencyController.getCurrency);
 
 
 module.exports = router;

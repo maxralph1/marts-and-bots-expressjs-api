@@ -12,7 +12,7 @@ const RatingSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true }
   },
   {
-    timestamps: true,
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
   }
 );
 

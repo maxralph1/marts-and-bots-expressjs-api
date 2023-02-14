@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PaymentSchema = new Schema({
-    reference: { type: String, unique: true, required: true },
+    ref: { type: String, unique: true, required: true },
     payment_method: {
       type: String,
       enum: ['Bitcoin', 'Debit/Credit Card', 'Cash on Delivery', 'PayPal', 'Wire Transfer'],
@@ -15,7 +15,7 @@ const PaymentSchema = new Schema({
       default: 'Failed',
       required: true
     },
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
+    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     order: { type: Schema.Types.ObjectId, ref: 'Order', required: true },
     date: { type: Date, default: Date.now }
   },

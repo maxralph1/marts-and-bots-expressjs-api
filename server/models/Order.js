@@ -2,19 +2,22 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const OrderSchema = new Schema({
+    ref: String,
     order_items: [
       { product_choice: { type: Schema.Types.ObjectId, ref: 'ProductInstance', required: true } }
     ],
     shipping_address: {
-      full_name: { type: String, min: 3, max: 50 },
-      address: { type: String, min: 3, max: 150 },
-      city:  { type: String, min: 3, max: 150 },
-      postal_code: { type: String, min: 3, max: 15 },
-      country: { type: String, min: 3, max: 45 },
+      full_name: { type: String, minLength: 3, maxLength: 100 },
+      address: { type: String, minLength: 3, maxLength: 150 },
+      phone: { type: String, minLength: 3, maxLength: 30 },
+      email: { type: String, minLength: 3, maxLength: 150 },
+      city:  { type: String, minLength: 3, maxLength: 150 },
+      postal_code: { type: String, minLength: 3, maxLength: 15 },
+      country: { type: String, minLength: 3, maxLength: 45 },
       location: {
-      latitude: { type: String, min: 3, max: 15 },
-      longitude: { type: String, min: 3, max: 15 },
-      plus_code: { type: String, min: 3, max: 15 },
+        latitude: { type: String, minLength: 3, maxLength: 15 },
+        longitude: { type: String, minLength: 3, maxLength: 15 },
+        plus_code: { type: String, minLength: 3, maxLength: 15 },
       },
     },
     items_price: { type: Number, required: true },
@@ -28,7 +31,7 @@ const OrderSchema = new Schema({
     return_order: Boolean
   },
   {
-    timestamps: true,
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
   },
   {
     optimisticConcurrency: true

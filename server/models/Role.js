@@ -6,7 +6,7 @@ const RoleSchema = new Schema({
     code: { type: String, minLength: 3, maxLength: 45, unique: true, required: true }
   },
   {
-    timestamps: true,
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
   }
 );
 

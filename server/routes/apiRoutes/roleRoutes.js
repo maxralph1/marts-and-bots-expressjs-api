@@ -5,11 +5,12 @@ const roleController = require('../../controllers/roleController');
 
 router.route('/')
     .get(roleController.getAllRoles)
-    .post(roleController.createRole)
+    .post(roleController.createRole);
+
+router.route('/:id')
+    .get(roleController.getRole)
     .put(roleController.updateRole)
     .delete(roleController.deleteRole);
-
-router.get('/:id', roleController.getRole);
 
 
 module.exports = router;

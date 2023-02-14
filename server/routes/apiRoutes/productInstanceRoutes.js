@@ -5,11 +5,12 @@ const productInstanceController = require('../../controllers/productInstanceCont
 
 router.route('/')
     .get(productInstanceController.getAllProductInstances)
-    .post(productInstanceController.createProductInstance)
+    .post(productInstanceController.createProductInstance);
+
+router.get('/:slug')
+    .get(productInstanceController.getProductInstance)
     .put(productInstanceController.updateProductInstance)
     .delete(productInstanceController.deleteProductInstance);
-
-router.get('/:id', productInstanceController.getProductInstance);
 
 
 module.exports = router;

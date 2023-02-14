@@ -5,11 +5,12 @@ const wishlistController = require('../../controllers/wishlistController');
 
 router.route('/')
     .get(wishlistController.getAllWishlists)
-    .post(wishlistController.createWishlist)
+    .post(wishlistController.createWishlist);
+
+router.route('/:id')
+    .get(wishlistController.getWishlist)
     .put(wishlistController.updateWishlist)
     .delete(wishlistController.deleteWishlist);
-
-router.get('/:id', wishlistController.getWishlist);
 
 
 module.exports = router;

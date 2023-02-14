@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     username: { type: String, minLength: 3, maxLength: 45, unique: true, required: true },
+    password: { type: String, minLength: 10, maxLength: 45, required: true },
     first_name: { type: String, maxLength: 45, required: true },
     other_names: { type: String, maxLength: 45 },
     last_name: { type: String, maxLength: 45, required: true },
@@ -19,7 +20,7 @@ const UserSchema = new Schema({
     is_deleted: Boolean
   },
   {
-    timestamps: true,
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
   }
 );
 

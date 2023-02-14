@@ -113,7 +113,7 @@ const deleteNewsletter = async (req, res) => {
   if (!newsletter) {
     return res.status(404).json({ "message": `No newsletter matches ${req.params.id}` });
   }
-  const result = await Newsletter.deleteOne();
+  const result = await newsletter.deleteOne();
   res.json(result);
 };
 

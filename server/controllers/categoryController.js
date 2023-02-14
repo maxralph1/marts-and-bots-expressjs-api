@@ -36,7 +36,7 @@ const createCategory = [
   ,
   async (req, res) => {
     if (req.body?.name) req.body.name;
-    if (req.body?.slug) {req.body.slug === null};
+    if (req.body?.slug) req.body.slug = null;
     if (req.body?.description) req.body.description;
 
     const errors = validationResult(req);

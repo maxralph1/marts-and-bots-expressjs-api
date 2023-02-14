@@ -5,11 +5,12 @@ const newsletterController = require('../../controllers/newsletterController');
 
 router.route('/')
     .get(newsletterController.getAllNewsletters)
-    .post(newsletterController.createNewsletter)
+    .post(newsletterController.createNewsletter);
+
+router.route('/:id')
+    .get(newsletterController.getNewsletter)
     .put(newsletterController.updateNewsletter)
     .delete(newsletterController.deleteNewsletter);
-
-router.get('/:id', newsletterController.getNewsletter);
 
 
 module.exports = router;

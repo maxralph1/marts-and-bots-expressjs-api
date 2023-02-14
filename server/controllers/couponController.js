@@ -26,7 +26,7 @@ const createCoupon = [
   body('code')
       .trim()
       .isLength({ min: 3, max: 20 })
-      .withMessage('Sub-category must be at least 3 and less than 20 caharcters long')
+      .withMessage('Code must be at least 3 and less than 20 caharcters long')
       .escape(),
   body('discount_type')
       .trim()
@@ -42,7 +42,7 @@ const createCoupon = [
       .trim()
       .isLength({ min: 1 })
       .withMessage('Currency must be specified')
-      .escape(),
+      .escape()
   ,
   async (req, res) => {
     const errors = validationResult(req);
@@ -94,7 +94,7 @@ const updateCoupon = [
       .trim()
       .isLength({ min: 1 })
       .withMessage('Currency must be specified')
-      .escape(),
+      .escape()
   ,
   async (req, res) => {
     const errors = validationResult(req);
@@ -136,9 +136,9 @@ const deleteCoupon = async (req, res) => {
 
 
 module.exports = {
- getAllCoupons,
- getCoupon,
- createCoupon,
- updateCoupon,
- deleteCoupon
+  getAllCoupons,
+  getCoupon,
+  createCoupon,
+  updateCoupon,
+  deleteCoupon
 };

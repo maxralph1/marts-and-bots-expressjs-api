@@ -2,14 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ProductInstanceSchema = new Schema({
-    name: { type: String, min: 2 },
-    code: String,
+    name: { type: String, minLength: 2 },
+    slug: String,
     imprint: String,
     color: String,
-    ISBN: String,
+    isbn: String,
+    other_details: [String],
     status: {
       type: String,
-      enum: ['Available', 'Sold'],
+      enum: ['Available', 'Sold', 'Returned'],
       default: 'Available',
       required: true
     },

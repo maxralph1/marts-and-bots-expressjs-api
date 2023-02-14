@@ -5,11 +5,12 @@ const couponController = require('../../controllers/couponController');
 
 router.route('/')
     .get(couponController.getAllCoupons)
-    .post(couponController.createCoupon)
+    .post(couponController.createCoupon);
+
+router.route('/:id')
+    .get(couponController.getCoupon)
     .put(couponController.updateCoupon)
     .delete(couponController.deleteCoupon);
-
-router.get('/:id', couponController.getCoupon);
 
 
 module.exports = router;

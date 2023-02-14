@@ -5,11 +5,12 @@ const productController = require('../../controllers/productController');
 
 router.route('/')
     .get(productController.getAllProducts)
-    .post(productController.createProduct)
+    .post(productController.createProduct);
+
+router.get('/:slug')
+    .get(productController.getProduct)
     .put(productController.updateProduct)
     .delete(productController.deleteProduct);
-
-router.get('/:id', productController.getProduct);
 
 
 module.exports = router;
