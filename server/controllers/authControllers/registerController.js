@@ -2,6 +2,7 @@ const User = require('../../models/User');
 const { body, validationResult } = require('express-validator');
 const { format } = require('date-fns');
 const { v4: uuid } = require('uuid');
+const bcrypt = require('bcrypt');
 
 
 
@@ -88,16 +89,19 @@ const registerUser = [
 
     const duplicateUsername = await User.findOne({ username: req.body.username }).exec();
     if (duplicateUsername) {
-      return res.status(400).json({ "message": `Username ${duplicateUsername} has already been taken` });
+      return res.status(409).json({ "message": `Username ${duplicateUsername.username} has already been taken` });
     }
 
     const duplicateEmail = await User.findOne({ email: req.body.email }).exec();
     if (duplicateEmail) {
-      return res.status(400).json({ "message": `Email ${duplicateEmail} is already registered` });
+      return res.status(409).json({ "message": `Email ${duplicateEmail.email} is already registered` });
     }
+
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
     const user = await new User({
       username: req.body.username,
+      password: hashedPassword,
       first_name: req.body.first_name,
       other_names: req.body.other_names,
       last_name: req.body.last_name,
@@ -119,4 +123,4 @@ const registerUser = [
 
 
 
-module.exports = registerUser;
+module.exports = { registerUser };

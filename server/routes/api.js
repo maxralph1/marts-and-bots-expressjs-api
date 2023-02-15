@@ -10,6 +10,7 @@ const router = express.Router();
 
 // Route entry points imports
 
+const authRouter = require('../routes/apiRoutes/authRoutes');
 const brandRouter = require('../routes/apiRoutes/brandRoutes');
 const categoryRouter = require('../routes/apiRoutes/categoryRoutes');
 const couponRouter = require('../routes/apiRoutes/couponRoutes');
@@ -30,6 +31,7 @@ const wishlistRouter = require('../routes/apiRoutes/wishlistRoutes');
 
 // Route entry points
 
+router.use('/auth', authRouter);
 router.use('/brands', brandRouter);
 router.use('/categories', categoryRouter);
 router.use('/coupons', couponRouter);
