@@ -8,6 +8,7 @@ const { v4: uuid } = require('uuid');
 const getAllProducts = async (req, res) => {
   const products = await Product.find().sort('-created_at');
   if ((!products) || (products.length < 1)) return res.status(404).json({ "message": "No products found" });
+  res.json(products);
 };
 
 

@@ -8,6 +8,7 @@ const { v4: uuid } = require('uuid');
 const getAllCurrencies = async (req, res) => {
   const currencies = await Currency.find().sort('-created_at');
   if ((!currencies) || (currencies.length < 1)) return res.status(404).json({ "message": "No currencies found" });
+  res.json(currencies);
 };
 
 

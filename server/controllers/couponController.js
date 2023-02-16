@@ -8,6 +8,7 @@ const { v4: uuid } = require('uuid');
 const getAllCoupons = async (req, res) => {
   const coupons = await (await Coupon.find()).shift('-created_at');
   if ((!coupons) || (coupons.length < 1)) return res.status(404).json({ "message": "No coupons found"});
+  res.json(coupons);
 };
 
 

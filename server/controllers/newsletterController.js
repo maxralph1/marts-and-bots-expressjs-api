@@ -8,6 +8,7 @@ const { v4: uuid } = require('uuid');
 const getAllNewsletters = async (req, res) => {
   const newsletters = await Newsletter.find().sort('-created_at');
   if ((!newsletters) || (newsletters.length < 1)) return res.status(404).json({ "message": "No newsletters found" });
+  res.json(newsletters);
 };
 
 

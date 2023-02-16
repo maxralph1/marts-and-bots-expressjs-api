@@ -1,7 +1,5 @@
 const User = require('../../models/User');
 const { body, validationResult } = require('express-validator');
-const { format } = require('date-fns');
-const { v4: uuid } = require('uuid');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
@@ -35,7 +33,32 @@ const loginUser = [
     const match = await bcrypt.compare(password, userFound.password);
 
     if (match) {
-      return res.status(200).json({ "message": "User logged in" });
+      const accessToken = jwt.sign(
+        // { "user": userFound.email || userFound.username },
+        { "username": userFound.username },
+        process.env.ACCESS_TOKEN_SECRET,
+        { expiresIn: 5 * 60 }
+      );
+      const refreshToken = jwt.sign(
+        // { "user": userFound.email || userFound.username },
+        { "username": userFound.username },
+        process.env.REFRESH_TOKEN_SECRET,
+        { expiresIn: 60 * 60 }
+      );
+      // const currentUser = { ...userFound, refreshToken };
+      userFound.refresh_token = refreshToken;
+      // const result = userFound.save((err) => {
+      //   if (err) {
+      //     return res.status(400).json(err);
+      //   }
+      //   res.sendStatus(201);
+      // });
+      const result = await userFound.save();
+      res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000 });
+      // Use should only set the sameSite key if the client and server are on different hosts.
+      res.json({ accessToken });
+      // res.status(200).json({ "message": "User logged in" });
+      console.log(result);
     } else {
       return res.status(401).json({ "message": "Aceess denied. Check your credentials."})
     };

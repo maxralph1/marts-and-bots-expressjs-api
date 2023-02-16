@@ -1,4 +1,4 @@
-const Role =- require('../models/Role');
+const Role = require('../models/Role');
 const { body, validationResult } = require('express-validator');
 const { format } = require('date-fns');
 const { v4: uuid } = require('uuid');
@@ -8,6 +8,7 @@ const { v4: uuid } = require('uuid');
 const getAllRoles = async (req, res) => {
   const roles = await Role.find().sort('-created_at');
   if ((!roles) || (roles.length < 1)) return res.status(404).json({ "message": "No roles found" });
+  res.json(roles);
 };
 
 

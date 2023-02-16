@@ -8,6 +8,7 @@ const { v4: uuid } = require('uuid');
 const getAllReviews = async (req, res) => {
   const reviews = await Review.find().sort('-created_at');
   if ((!reviews) || (reviews.length < 1)) return res.status(404).json({ "message": "No reviews found" });
+  res.json(reviews);
 };
 
 

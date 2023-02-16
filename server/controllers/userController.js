@@ -8,6 +8,7 @@ const { v4: uuid } = require('uuid');
 const getAllUsers = async (req, res) => {
   const users = await User.find().sort('-created_at');
   if ((!users) || (users.length < 1)) return res.status(404).json({ "message": "No users found" });
+  res.json(users);
 };
 
 

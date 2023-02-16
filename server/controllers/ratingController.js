@@ -8,6 +8,7 @@ const { v4: uuid } = require('uuid');
 const getAllRatings = async (req, res) => {
   const ratings = await Rating.find().sort('-created_at');
   if ((!ratings) || (ratings.length < 1)) return res.status(404).json({ "message": "No ratings found" });
+  res.json(ratings);
 };
 
 

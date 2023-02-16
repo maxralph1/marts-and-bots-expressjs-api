@@ -1,16 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const brandController = require('../../controllers/brandController');
+const verifyJWT = require('../../middlewares/verifyJWT');
 
 
 router.route('/')
     .get(brandController.getAllBrands)
-    .post(brandController.createBrand);
+    .post(verifyJWT, brandController.createBrand);
 
 router.route('/:code')
     .get(brandController.getBrand)
-    .put(brandController.updateBrand)
-    .delete(brandController.deleteBrand);
+    .put(verifyJWT, brandController.updateBrand)
+    .delete(verifyJWT, brandController.deleteBrand);
 
 
 module.exports = router;

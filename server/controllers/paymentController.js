@@ -8,6 +8,7 @@ const { v4: uuid } = require('uuid');
 const getAllPayments = async (req, res) => {
   const payments = await Payment.find().sort('-created_at');
   if ((!payments) || (payments.length < 1)) return res.status(404).json({ "message": "No payments found" });
+  res.json(payments);
 };
 
 

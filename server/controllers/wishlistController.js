@@ -8,6 +8,7 @@ const { v4: uuid } = require('uuid');
 const getAllWishlists = async (req, res) => {
   const wishlists = await Wishlist.find().sort('-created_at');
   if ((!wishlists) || (wishlists.length < 1)) return res.status(404).json({ "message": "no wishlists found" });
+  res.json(wishlists);
 };
 
 
