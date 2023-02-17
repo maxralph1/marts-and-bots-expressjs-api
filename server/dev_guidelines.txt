@@ -77,3 +77,16 @@ OR
 crypto.randomBytes(64).toString('hex')
 
 authentication completed and authorization amplified (addition of roles)
+
+
+Roles:
+
+major-can-create
+major-can-read
+major-can-update
+major-can-delete
+
+minor-can-create
+minor-can-read
+minor-can-update
+minor-can-delete

@@ -75,6 +75,8 @@ const registerUser = [
     if (req.body?.description) req.body.description;
     if (req.body?.phone) req.body.phone;
     if (req.body?.email) req.body.email;
+    if (req.body?.language) req.body.language;
+    if (req.body?.roles) req.body.roles;
     if (req.body?.email_verified_at) req.body.email_verified_at = null;
     if (req.body?.display_mode) req.body.display_mode = null;
     if (req.body?.refresh_token) req.body.refresh_token = null;
@@ -110,13 +112,15 @@ const registerUser = [
       description: req.body.description,
       phone: req.body.phone,
       email: req.body.email,
+      language: req.body.language,
+      roles: req.body.roles
     });
 
     user.save((err) => {
       if (err) {
         return res.status(400).json(err);
       }
-      res.status(201).json({ "message": `User successfully created`, "user_details": user});
+      res.status(201).json({ "message": `User successfully created`, "user_details": user });
     });
   }
 ];

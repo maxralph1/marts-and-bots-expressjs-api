@@ -7,7 +7,7 @@ router.route('/')
     .get(roleController.getAllRoles)
     .post(roleController.createRole);
 
-router.route('/:id')
+router.route('/:code')
     .get(roleController.getRole)
     .put(roleController.updateRole)
     .delete(roleController.deleteRole);

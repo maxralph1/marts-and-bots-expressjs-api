@@ -33,9 +33,16 @@ const loginUser = [
     const match = await bcrypt.compare(password, userFound.password);
 
     if (match) {
+      const roles = Object.values(userFound.roles);
       const accessToken = jwt.sign(
         // { "user": userFound.email || userFound.username },
-        { "username": userFound.username },
+        { 
+          "userInfo": 
+            {
+              "username": userFound.username,
+              "roles": roles
+            }
+        },
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: 5 * 60 }
       );
@@ -43,7 +50,7 @@ const loginUser = [
         // { "user": userFound.email || userFound.username },
         { "username": userFound.username },
         process.env.REFRESH_TOKEN_SECRET,
-        { expiresIn: 60 * 60 }
+        { expiresIn: 10 * 60 }
       );
       // const currentUser = { ...userFound, refreshToken };
       userFound.refresh_token = refreshToken;

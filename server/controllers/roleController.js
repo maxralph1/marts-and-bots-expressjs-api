@@ -104,11 +104,11 @@ const updateRole = [
 
 
 const deleteRole = async (req, res) => {
-  if (!req?.params?.id) return res.status(400).json({ "message": "Accurate role required" });
+  if (!req?.params?.code) return res.status(400).json({ "message": "Accurate role required" });
 
-  const role = await Role.findOne({ _id: req.params.id }).exec();
+  const role = await Role.findOne({ code: req.params.code }).exec();
   if (!role) {
-    return res.status(404).json({ "message": `No role matches ${req.params.id}` });
+    return res.status(404).json({ "message": `No role matches ${req.params.code}` });
   };
   const result = await role.deleteOne();
   res.json(result);

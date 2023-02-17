@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const brandController = require('../../controllers/brandController');
 const verifyJWT = require('../../middlewares/verifyJWT');
+// const rolesList = require('../../config/rolesList')
 
 
 router.route('/')
